@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoffeeCounter">
         <activity
+            android:label="Статистика"
+            android:name=".StatsActivity"
+            android:exported="false" />
+        <activity
+            android:label="Добавление напитка"
             android:name=".NewItemActivity"
             android:exported="false" />
         <activity
