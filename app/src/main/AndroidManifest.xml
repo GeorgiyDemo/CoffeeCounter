@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoffeeCounter">
         <activity
-            android:label="Статистика"
             android:name=".StatsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Статистика" />
         <activity
-            android:label="Добавление напитка"
             android:name=".NewItemActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Добавление напитка" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
