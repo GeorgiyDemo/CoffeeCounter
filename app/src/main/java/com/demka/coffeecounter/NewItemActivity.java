@@ -10,11 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.demka.coffeecounter.adapters.NewCoffeeAdapter;
+
 import java.util.ArrayList;
 
 public class NewItemActivity extends AppCompatActivity {
 
-    ArrayAdapter<String> mArrayAdapter;
     RecyclerView newCoffeeRecyclerView;
     ArrayList<String> mNameList = new ArrayList<>();
     String s1[], s2[];
@@ -34,9 +35,6 @@ public class NewItemActivity extends AppCompatActivity {
         newCoffeeRecyclerView = findViewById(R.id.newCoffeeRecyclerView);
         addItemButton = findViewById(R.id.addItemButton);
 
-        mArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mNameList);
-
-
         newCoffeeRecyclerView = findViewById(R.id.newCoffeeRecyclerView);
         NewCoffeeAdapter timetableAdapter = new NewCoffeeAdapter(this, s1, s2);
 
@@ -45,20 +43,9 @@ public class NewItemActivity extends AppCompatActivity {
 
         addItemButton.setOnClickListener(newButtonListener);
 
-
-        for (int i = 0; i < 10; i++) {
-            mNameList.add(String.valueOf(i));
-        }
-
-        mArrayAdapter.notifyDataSetChanged();
-
     }
 
     private void addItemButtonClicked(View v) {
-
-        //Init
-        //mNameList
-        //
 
         Intent intent = new Intent();
         intent.putExtra("name", "TEST");

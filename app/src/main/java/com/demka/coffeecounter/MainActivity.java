@@ -9,13 +9,19 @@ import android.view.View;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.demka.coffeecounter.adapters.MyAdapter;
 import com.demka.coffeecounter.databinding.ActivityMainBinding;
+import com.demka.coffeecounter.dbhelpers.BaseDbHelper;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private ActivityResultLauncher<Intent> addItemActivity;
+    BaseDbHelper dbHelper;
+    RecyclerView myRecyclerView;
+    MyAdapter myAdapter;
 
 
     @Override
@@ -30,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
 
         binding.newItemButton.setOnClickListener(newItemButtonListener);
 
+
+        dbHelper = new BaseDbHelper(this);
+        myAdapter = new MyAdapter(this, dbHelper);
 
         addItemActivity = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -73,5 +82,9 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
+
+
+
 
 }

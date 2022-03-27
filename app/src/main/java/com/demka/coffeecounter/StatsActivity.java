@@ -1,22 +1,16 @@
 package com.demka.coffeecounter;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.demka.coffeecounter.adapters.ChartDataAdapter;
 import com.demka.coffeecounter.listviewitems.BarChartItem;
 import com.demka.coffeecounter.listviewitems.ChartItem;
 import com.demka.coffeecounter.listviewitems.LineChartItem;
 import com.demka.coffeecounter.listviewitems.PieChartItem;
-import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -30,43 +24,25 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class StatsActivity extends AppCompatActivity {
 
-    private Button exitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
 
-        exitButton = findViewById(R.id.exitButton);
-
-        setTitle("ListViewMultiChartActivity");
-
         ListView lv = findViewById(R.id.listView1);
 
         ArrayList<ChartItem> list = new ArrayList<>();
 
-        // 30 items
-        for (int i = 0; i < 30; i++) {
-
-            if (i % 3 == 0) {
-                list.add(new LineChartItem(generateDataLine(i + 1), getApplicationContext()));
-            } else if (i % 3 == 1) {
-                list.add(new BarChartItem(generateDataBar(i + 1), getApplicationContext()));
-            } else if (i % 3 == 2) {
-                list.add(new PieChartItem(generateDataPie(), getApplicationContext()));
-            }
-        }
+        list.add(new PieChartItem(generateDataPie(), getApplicationContext()));
+        list.add(new LineChartItem(generateDataLine(1), getApplicationContext()));
+        list.add(new BarChartItem(generateDataBar(1), getApplicationContext()));
 
         ChartDataAdapter cda = new ChartDataAdapter(getApplicationContext(), list);
         lv.setAdapter(cda);
-    }
-
-    private void exitButtonClicked(View v) {
-
     }
 
     /**
@@ -152,34 +128,4 @@ public class StatsActivity extends AppCompatActivity {
 
         return new PieData(d);
     }
-
-    /**
-     * adapter that supports 3 different item types
-     */
-    private class ChartDataAdapter extends ArrayAdapter<ChartItem> {
-
-        ChartDataAdapter(Context context, List<ChartItem> objects) {
-            super(context, 0, objects);
-        }
-
-        @NonNull
-        @Override
-        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-            //noinspection ConstantConditions
-            return getItem(position).getView(position, convertView, getContext());
-        }
-
-        @Override
-        public int getItemViewType(int position) {
-            // return the views type
-            ChartItem ci = getItem(position);
-            return ci != null ? ci.getItemType() : 0;
-        }
-
-        @Override
-        public int getViewTypeCount() {
-            return 3; // we have 3 different item-types
-        }
-    }
-
 }

@@ -36,7 +36,7 @@
         android:paddingBottom="12dp">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/sender_icon"
+            android:id="@+id/main_coffee_icon"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:scaleType="centerCrop"
@@ -45,7 +45,7 @@
             app:shapeAppearanceOverlay="?attr/shapeAppearanceMediumComponent" />
 
         <TextView
-            android:id="@+id/sender_title"
+            android:id="@+id/main_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -53,14 +53,14 @@
             android:maxLines="1"
             android:textAppearance="?attr/textAppearanceBodyLarge"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/email_title"
-            app:layout_constraintEnd_toStartOf="@id/email_timestamp"
-            app:layout_constraintStart_toEndOf="@id/sender_icon"
+            app:layout_constraintBottom_toTopOf="@+id/main_caffeine"
+            app:layout_constraintEnd_toStartOf="@id/main_timestamp"
+            app:layout_constraintStart_toEndOf="@id/main_coffee_icon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/email_title"
+            android:id="@+id/main_caffeine"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -69,13 +69,13 @@
             android:maxLines="1"
             android:textAppearance="?attr/textAppearanceBodyMedium"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@id/email_preview"
-            app:layout_constraintEnd_toStartOf="@id/email_timestamp"
-            app:layout_constraintStart_toEndOf="@id/sender_icon"
-            app:layout_constraintTop_toBottomOf="@+id/sender_title" />
+            app:layout_constraintBottom_toBottomOf="@id/main_amount"
+            app:layout_constraintEnd_toStartOf="@id/main_timestamp"
+            app:layout_constraintStart_toEndOf="@id/main_coffee_icon"
+            app:layout_constraintTop_toBottomOf="@+id/main_title" />
 
         <TextView
-            android:id="@+id/email_preview"
+            android:id="@+id/main_amount"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -85,16 +85,16 @@
             android:textAppearance="?attr/textAppearanceBodySmall"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/email_timestamp"
-            app:layout_constraintStart_toEndOf="@id/sender_icon"
-            app:layout_constraintTop_toBottomOf="@+id/email_title" />
+            app:layout_constraintEnd_toStartOf="@id/main_timestamp"
+            app:layout_constraintStart_toEndOf="@id/main_coffee_icon"
+            app:layout_constraintTop_toBottomOf="@+id/main_caffeine" />
 
         <TextView
-            android:id="@+id/email_timestamp"
+            android:id="@+id/main_timestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ssss"
-            app:layout_constraintBaseline_toBaselineOf="@id/sender_title"
+            app:layout_constraintBaseline_toBaselineOf="@id/main_title"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

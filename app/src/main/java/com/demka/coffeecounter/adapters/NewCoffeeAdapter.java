@@ -1,4 +1,4 @@
-package com.demka.coffeecounter;
+package com.demka.coffeecounter.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.demka.coffeecounter.R;
 
 public class NewCoffeeAdapter extends RecyclerView.Adapter<NewCoffeeAdapter.MyViewHolder> {
 
@@ -26,7 +28,7 @@ public class NewCoffeeAdapter extends RecyclerView.Adapter<NewCoffeeAdapter.MyVi
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.list_view_item, parent, false);
+        View view = inflater.inflate(R.layout.add_item_list_view_item, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -48,8 +50,8 @@ public class NewCoffeeAdapter extends RecyclerView.Adapter<NewCoffeeAdapter.MyVi
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            timetable_title = itemView.findViewById(R.id.email_title);
-            timetable_place = itemView.findViewById(R.id.sender_title);
+            timetable_title = itemView.findViewById(R.id.main_caffeine);
+            timetable_place = itemView.findViewById(R.id.main_title);
 
         }
     }
