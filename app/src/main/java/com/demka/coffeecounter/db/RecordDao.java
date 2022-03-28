@@ -6,6 +6,9 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Transaction;
 
+import com.demka.coffeecounter.db.relations.CoffeeWithRecord;
+import com.demka.coffeecounter.db.relations.RecordWithCoffee;
+
 import java.util.List;
 
 @Dao
@@ -14,6 +17,10 @@ public interface RecordDao {
 
     @Query("SELECT * FROM record;")
     List<Record> getAllRecords();
+
+    @Transaction
+    @Query("SELECT * FROM record;")
+    List<RecordWithCoffee> getAllRecordsWithCoffee();
 
     @Insert()
     void insertRecord(Record... records);

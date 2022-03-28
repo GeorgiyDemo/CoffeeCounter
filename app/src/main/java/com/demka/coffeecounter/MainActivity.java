@@ -17,6 +17,7 @@ import com.demka.coffeecounter.adapters.RecordListAdapter;
 import com.demka.coffeecounter.databinding.ActivityMainBinding;
 import com.demka.coffeecounter.db.AppDatabase;
 import com.demka.coffeecounter.db.Record;
+import com.demka.coffeecounter.db.relations.RecordWithCoffee;
 
 import java.util.List;
 
@@ -40,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         binding.newItemButton.setOnClickListener(newItemButtonListener);
 
-
-        //myAdapter = new MyAdapter(this);
-
         addItemActivity = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -53,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         );
 
         initRecycleView();
-
         loadRecordList();
 
     }
@@ -62,19 +59,16 @@ public class MainActivity extends AppCompatActivity {
         mainRecyclerView = findViewById(R.id.mainRecyclerView);
         mainRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         mainRecyclerView.addItemDecoration(dividerItemDecoration);
         recordListAdapter = new RecordListAdapter(this);
         mainRecyclerView.setAdapter(recordListAdapter);
 
-
-
     }
 
     private void loadRecordList(){
         AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());
-        List<Record> recordList = db.recordDao().getAllRecords();
+        List<RecordWithCoffee> recordList = db.recordDao().getAllRecordsWithCoffee();
         recordListAdapter.setRecordList(recordList);
     }
 

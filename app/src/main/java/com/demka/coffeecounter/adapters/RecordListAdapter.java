@@ -11,17 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.demka.coffeecounter.R;
-import com.demka.coffeecounter.db.Record;
+import com.demka.coffeecounter.db.relations.RecordWithCoffee;
 
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 
 public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.MyViewHolder> {
 
     private Context context;
-    public List<Record> recordList;
+    public List<RecordWithCoffee> recordList;
 
 
     public RecordListAdapter(Context context){
@@ -29,7 +28,7 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.My
 
     }
 
-    public void setRecordList(List<Record> recordList){
+    public void setRecordList(List<RecordWithCoffee> recordList){
         this.recordList = recordList;
         notifyDataSetChanged();
     }
@@ -37,7 +36,7 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.My
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.main_item_list_view_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.record_list_view_item, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -45,13 +44,18 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.My
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         Date date = new Date ();
-        date.setTime(recordList.get(position).time*1000);
+
+        date.setTime(recordList.get(position).record.time*1000);
         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         String currentDateString = dateFormatter.format(date);
 
+        Double caffeine = recordList.get(position).record.amount * recordList.get(position).coffee.mg;
+
+        //TODO: поменять на id ресурса из SQLite
         holder.icon.setImageResource(R.drawable.affogato);
-        holder.title.setText(recordList.get(position).name);
-        holder.amount.setText(String.valueOf(recordList.get(position).amount));
+        holder.title.setText(recordList.get(position).coffee.name);
+        holder.caffeine.setText(String.valueOf(caffeine));
+        holder.amount.setText(String.valueOf(recordList.get(position).record.amount));
         holder.timestamp.setText(currentDateString);
     }
 
