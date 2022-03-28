@@ -6,9 +6,6 @@ import androidx.room.Relation;
 import com.demka.coffeecounter.db.Coffee;
 import com.demka.coffeecounter.db.Record;
 
-import java.util.List;
-
-
 
 public class RecordWithCoffee {
     @Embedded

@@ -1,7 +1,6 @@
 package com.demka.coffeecounter.db.relations;
 
 import androidx.room.Embedded;
-import androidx.room.Entity;
 import androidx.room.Relation;
 
 import com.demka.coffeecounter.db.Coffee;
@@ -11,7 +10,8 @@ import java.util.List;
 
 
 public class CoffeeWithRecord {
-    @Embedded public Coffee coffee;
+    @Embedded
+    public Coffee coffee;
     @Relation(
             parentColumn = "id",
             entityColumn = "coffeeId"

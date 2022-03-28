@@ -19,16 +19,16 @@ import java.util.List;
 
 public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.MyViewHolder> {
 
-    private Context context;
     public List<RecordWithCoffee> recordList;
+    private Context context;
 
 
-    public RecordListAdapter(Context context){
+    public RecordListAdapter(Context context) {
         this.context = context;
 
     }
 
-    public void setRecordList(List<RecordWithCoffee> recordList){
+    public void setRecordList(List<RecordWithCoffee> recordList) {
         this.recordList = recordList;
         notifyDataSetChanged();
     }
@@ -43,19 +43,23 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        Date date = new Date ();
+        Date date = new Date();
 
-        date.setTime(recordList.get(position).record.time*1000);
+        date.setTime(recordList.get(position).record.time * 1000);
         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         String currentDateString = dateFormatter.format(date);
 
         Double caffeine = recordList.get(position).record.amount * recordList.get(position).coffee.mg;
 
-        //TODO: поменять на id ресурса из SQLite
-        holder.icon.setImageResource(R.drawable.affogato);
+        String recordImg = recordList.get(position).coffee.imagePath;
+        int resID = context.getResources().getIdentifier(recordImg, "drawable", context.getPackageName());
+        if (resID != 0) {
+            holder.icon.setImageResource(resID);
+        }
+
         holder.title.setText(recordList.get(position).coffee.name);
-        holder.caffeine.setText(String.valueOf(caffeine));
-        holder.amount.setText(String.valueOf(recordList.get(position).record.amount));
+        holder.caffeine.setText("Caffeine: " + String.valueOf(caffeine)+" mg");
+        holder.amount.setText("Amount: "+ String.valueOf(recordList.get(position).record.amount));
         holder.timestamp.setText(currentDateString);
     }
 
@@ -64,7 +68,7 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.My
         return recordList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView icon;
         TextView title;
@@ -72,7 +76,7 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.My
         TextView amount;
         TextView timestamp;
 
-        public MyViewHolder(View view){
+        public MyViewHolder(View view) {
             super(view);
             icon = view.findViewById(R.id.main_icon);
             title = view.findViewById(R.id.main_title);

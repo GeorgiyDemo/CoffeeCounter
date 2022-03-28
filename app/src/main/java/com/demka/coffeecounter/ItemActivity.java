@@ -1,8 +1,8 @@
 package com.demka.coffeecounter;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ItemActivity extends AppCompatActivity {
 

@@ -6,7 +6,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Transaction;
 
-import com.demka.coffeecounter.db.relations.CoffeeWithRecord;
 import com.demka.coffeecounter.db.relations.RecordWithCoffee;
 
 import java.util.List;
