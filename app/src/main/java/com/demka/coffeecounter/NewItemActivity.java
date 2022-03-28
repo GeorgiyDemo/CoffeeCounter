@@ -9,10 +9,15 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.ColumnInfo;
 
 import com.demka.coffeecounter.adapters.NewCoffeeAdapter;
+import com.demka.coffeecounter.db.AppDatabase;
+import com.demka.coffeecounter.db.Record;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class NewItemActivity extends AppCompatActivity {
 
@@ -47,10 +52,25 @@ public class NewItemActivity extends AppCompatActivity {
 
     private void addItemButtonClicked(View v) {
 
+        safeNewRecord("ТЕСТ", 1L);
         Intent intent = new Intent();
-        intent.putExtra("name", "TEST");
         setResult(RESULT_OK, intent);
         finish();
+    }
+
+
+    private void safeNewRecord(String name, Long amount){
+
+        long time = System.currentTimeMillis() / 1000L;
+        AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());
+
+        Record record = new Record();
+        //TODO: переделать
+        record.coffeeId = 1L;
+        record.amount = amount;
+        record.time = time;
+
+        db.recordDao().insertRecord(record);
 
     }
 }

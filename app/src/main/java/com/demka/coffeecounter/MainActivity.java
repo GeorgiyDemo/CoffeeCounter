@@ -9,19 +9,23 @@ import android.view.View;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.demka.coffeecounter.adapters.MyAdapter;
+import com.demka.coffeecounter.adapters.RecordListAdapter;
 import com.demka.coffeecounter.databinding.ActivityMainBinding;
-import com.demka.coffeecounter.dbhelpers.BaseDbHelper;
+import com.demka.coffeecounter.db.AppDatabase;
+import com.demka.coffeecounter.db.Record;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private ActivityResultLauncher<Intent> addItemActivity;
-    BaseDbHelper dbHelper;
-    RecyclerView myRecyclerView;
-    MyAdapter myAdapter;
+    RecyclerView mainRecyclerView;
+    private RecordListAdapter recordListAdapter;
 
 
     @Override
@@ -37,23 +41,45 @@ public class MainActivity extends AppCompatActivity {
         binding.newItemButton.setOnClickListener(newItemButtonListener);
 
 
-        dbHelper = new BaseDbHelper(this);
-        myAdapter = new MyAdapter(this, dbHelper);
+        //myAdapter = new MyAdapter(this);
 
         addItemActivity = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
                     if (result.getResultCode() == AppCompatActivity.RESULT_OK) {
-                        Intent data = result.getData();
-                        if (data == null) {
-                            return;
-                        }
-                        //TODO чета делать
+                        loadRecordList();
                     }
                 }
         );
 
+        initRecycleView();
+
+        loadRecordList();
+
     }
+
+    private void initRecycleView(){
+        mainRecyclerView = findViewById(R.id.mainRecyclerView);
+        mainRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        mainRecyclerView.addItemDecoration(dividerItemDecoration);
+        recordListAdapter = new RecordListAdapter(this);
+        mainRecyclerView.setAdapter(recordListAdapter);
+
+
+
+    }
+
+    private void loadRecordList(){
+        AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());
+        List<Record> recordList = db.recordDao().getAllRecords();
+        recordListAdapter.setRecordList(recordList);
+    }
+
+
+
 
     public void newItemButtonClicked(View v) {
         Intent intent = new Intent(this, NewItemActivity.class);

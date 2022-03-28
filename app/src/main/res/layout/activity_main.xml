@@ -15,7 +15,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/button"
+            android:background="@color/purple_500"
             app:popupTheme="@style/Theme.CoffeeCounter.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -29,7 +29,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
-        app:backgroundTint="@color/button"
+        app:backgroundTint="@color/purple_500"
         app:srcCompat="@android:drawable/ic_menu_add" />
 
 

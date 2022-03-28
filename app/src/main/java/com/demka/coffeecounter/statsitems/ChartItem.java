@@ -1,4 +1,4 @@
-package com.demka.coffeecounter.listviewitems;
+package com.demka.coffeecounter.statsitems;
 
 import android.content.Context;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.demka.coffeecounter.listviewitems;
+package com.demka.coffeecounter.statsitems;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

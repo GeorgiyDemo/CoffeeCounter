@@ -36,7 +36,7 @@
         android:paddingBottom="12dp">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/main_coffee_icon"
+            android:id="@+id/main_icon"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:scaleType="centerCrop"
@@ -55,7 +55,7 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/main_caffeine"
             app:layout_constraintEnd_toStartOf="@id/main_timestamp"
-            app:layout_constraintStart_toEndOf="@id/main_coffee_icon"
+            app:layout_constraintStart_toEndOf="@id/main_icon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -71,7 +71,7 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/main_amount"
             app:layout_constraintEnd_toStartOf="@id/main_timestamp"
-            app:layout_constraintStart_toEndOf="@id/main_coffee_icon"
+            app:layout_constraintStart_toEndOf="@id/main_icon"
             app:layout_constraintTop_toBottomOf="@+id/main_title" />
 
         <TextView
@@ -86,7 +86,7 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/main_timestamp"
-            app:layout_constraintStart_toEndOf="@id/main_coffee_icon"
+            app:layout_constraintStart_toEndOf="@id/main_icon"
             app:layout_constraintTop_toBottomOf="@+id/main_caffeine" />
 
         <TextView

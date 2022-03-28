@@ -34,8 +34,8 @@ public class NewCoffeeAdapter extends RecyclerView.Adapter<NewCoffeeAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.timetable_title.setText(data1[position]);
-        holder.timetable_place.setText(data2[position]);
+        holder.add_title.setText(data1[position]);
+        holder.add_caffeine.setText(data2[position]);
     }
 
     @Override
@@ -45,13 +45,14 @@ public class NewCoffeeAdapter extends RecyclerView.Adapter<NewCoffeeAdapter.MyVi
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView timetable_title, timetable_place;
+        TextView add_title;
+        TextView add_caffeine;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            timetable_title = itemView.findViewById(R.id.main_caffeine);
-            timetable_place = itemView.findViewById(R.id.main_title);
+            add_title = itemView.findViewById(R.id.add_title);
+            add_caffeine = itemView.findViewById(R.id.add_caffeine);
 
         }
     }

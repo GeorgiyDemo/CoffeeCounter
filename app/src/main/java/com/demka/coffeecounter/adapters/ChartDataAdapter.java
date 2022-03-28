@@ -7,7 +7,7 @@ import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 
-import com.demka.coffeecounter.listviewitems.ChartItem;
+import com.demka.coffeecounter.statsitems.ChartItem;
 
 import java.util.List;
 

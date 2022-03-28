@@ -7,10 +7,10 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.demka.coffeecounter.adapters.ChartDataAdapter;
-import com.demka.coffeecounter.listviewitems.BarChartItem;
-import com.demka.coffeecounter.listviewitems.ChartItem;
-import com.demka.coffeecounter.listviewitems.LineChartItem;
-import com.demka.coffeecounter.listviewitems.PieChartItem;
+import com.demka.coffeecounter.statsitems.BarChartItem;
+import com.demka.coffeecounter.statsitems.ChartItem;
+import com.demka.coffeecounter.statsitems.LineChartItem;
+import com.demka.coffeecounter.statsitems.PieChartItem;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
