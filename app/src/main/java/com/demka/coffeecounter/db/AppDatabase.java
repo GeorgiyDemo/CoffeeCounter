@@ -16,23 +16,6 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 @Database(entities = {Coffee.class, Record.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
-    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
-        @Override
-        public void migrate(SupportSQLiteDatabase database) {
-            database.execSQL("INSERT INTO coffee (name, mg, image_path) VALUES ('Lazy eye', 112.4, 'test');");
-
-        }
-    };
-    static final Migration MIGRATION_2_3 = new Migration(2, 3) {
-        @Override
-        public void migrate(SupportSQLiteDatabase database) {
-            /*
-            database.execSQL("ALTER TABLE Book "
-                    + " ADD COLUMN pub_year INTEGER");
-
-             */
-        }
-    };
     private static AppDatabase INSTANCE;
 
     public static AppDatabase getDbInstance(Context context) {

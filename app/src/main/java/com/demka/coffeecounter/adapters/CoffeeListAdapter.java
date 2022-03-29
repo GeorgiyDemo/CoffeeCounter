@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,7 +49,11 @@ public class CoffeeListAdapter extends RecyclerView.Adapter<CoffeeListAdapter.My
         }
 
         holder.title.setText(coffeeList.get(position).name);
-        holder.caffeine.setText(String.valueOf(coffeeList.get(position).mg));
+
+        String caffeineString = "Caffeine: " + coffeeList.get(position).mg+" mg";
+        holder.caffeine.setText(caffeineString);
+        holder.caffeine.setText(caffeineString);
+
 
         holder.bind(coffeeList.get(position));
     }
@@ -73,7 +76,6 @@ public class CoffeeListAdapter extends RecyclerView.Adapter<CoffeeListAdapter.My
         ImageView tick;
         TextView title;
         TextView caffeine;
-        TextView id;
 
         public MyViewHolder(View view) {
             super(view);
@@ -81,7 +83,6 @@ public class CoffeeListAdapter extends RecyclerView.Adapter<CoffeeListAdapter.My
             tick = view.findViewById(R.id.add_tick_image);
             title = view.findViewById(R.id.add_title);
             caffeine = view.findViewById(R.id.add_caffeine);
-            id = view.findViewById(R.id.add_id);
         }
 
         void bind(final Coffee coffee) {

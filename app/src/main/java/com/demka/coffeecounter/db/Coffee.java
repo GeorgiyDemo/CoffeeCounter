@@ -12,10 +12,8 @@ public class Coffee {
     @PrimaryKey(autoGenerate = true)
     public Long id;
 
-    @ColumnInfo
     public String name;
-
-    @ColumnInfo
+    
     public Double mg;
 
     @ColumnInfo(name = "image_path")

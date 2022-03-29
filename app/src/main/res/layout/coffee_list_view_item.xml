@@ -58,7 +58,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/add_id"
+            android:id="@+id/add_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -68,7 +68,7 @@
             android:textAppearance="?attr/textAppearanceBodyLarge"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/add_title"
+            app:layout_constraintBottom_toTopOf="@+id/add_caffeine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/add_icon"
             app:layout_constraintTop_toTopOf="parent"
@@ -76,7 +76,7 @@
 
 
         <TextView
-            android:id="@+id/add_title"
+            android:id="@+id/add_caffeine"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -86,21 +86,6 @@
             android:textAppearance="?attr/textAppearanceBodyMedium"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/add_tick_image"
-            app:layout_constraintStart_toEndOf="@id/add_icon"
-            app:layout_constraintTop_toBottomOf="@+id/add_id" />
-
-        <TextView
-            android:id="@+id/add_caffeine"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:textAppearance="?attr/textAppearanceBodySmall"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/add_icon"
             app:layout_constraintTop_toBottomOf="@+id/add_title" />
 

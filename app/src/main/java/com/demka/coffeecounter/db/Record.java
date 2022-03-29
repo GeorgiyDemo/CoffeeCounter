@@ -9,13 +9,10 @@ public class Record {
 
     @PrimaryKey(autoGenerate = true)
     public Long id;
-
-    @ColumnInfo
+    
     public Long coffeeId;
 
-    @ColumnInfo
     public Long amount;
 
-    @ColumnInfo
     public Long time;
 }
