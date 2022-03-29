@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +20,7 @@ public class CoffeeListAdapter extends RecyclerView.Adapter<CoffeeListAdapter.My
 
     public List<Coffee> coffeeList;
     private Context context;
+    private int checkedPosition = 0;
 
 
     public CoffeeListAdapter(Context context) {
@@ -47,9 +49,10 @@ public class CoffeeListAdapter extends RecyclerView.Adapter<CoffeeListAdapter.My
             holder.icon.setImageResource(resID);
         }
 
-        holder.id.setText(String.valueOf(coffeeList.get(position).id));
         holder.title.setText(coffeeList.get(position).name);
         holder.caffeine.setText(String.valueOf(coffeeList.get(position).mg));
+
+        holder.bind(coffeeList.get(position));
     }
 
     @Override
@@ -57,9 +60,17 @@ public class CoffeeListAdapter extends RecyclerView.Adapter<CoffeeListAdapter.My
         return coffeeList.size();
     }
 
+    public Coffee getSelected() {
+        if (checkedPosition != -1) {
+            return coffeeList.get(checkedPosition);
+        }
+        return null;
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView icon;
+        ImageView tick;
         TextView title;
         TextView caffeine;
         TextView id;
@@ -67,9 +78,34 @@ public class CoffeeListAdapter extends RecyclerView.Adapter<CoffeeListAdapter.My
         public MyViewHolder(View view) {
             super(view);
             icon = view.findViewById(R.id.add_icon);
+            tick = view.findViewById(R.id.add_tick_image);
             title = view.findViewById(R.id.add_title);
             caffeine = view.findViewById(R.id.add_caffeine);
             id = view.findViewById(R.id.add_id);
         }
+
+        void bind(final Coffee coffee) {
+            if (checkedPosition == -1) {
+                tick.setVisibility(View.GONE);
+            } else {
+                if (checkedPosition == getAdapterPosition()) {
+                    tick.setVisibility(View.VISIBLE);
+                } else {
+                    tick.setVisibility(View.GONE);
+                }
+            }
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    tick.setVisibility(View.VISIBLE);
+                    if (checkedPosition != getAdapterPosition()) {
+                        notifyItemChanged(checkedPosition);
+                        checkedPosition = getAdapterPosition();
+                    }
+                }
+            });
+        }
+
     }
 }

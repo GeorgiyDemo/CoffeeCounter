@@ -5,12 +5,13 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2255" />
+        <entry key="app/src/main/res/drawable/ic_tick_point.xml" value="0.1405" />
         <entry key="app/src/main/res/layout/activity_item.xml" value="0.1993206117211318" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1205612182617187" />
         <entry key="app/src/main/res/layout/activity_new_item.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_stats.xml" value="0.1" />
         <entry key="app/src/main/res/layout/add_item_list_view_item.xml" value="0.14175724637681159" />
-        <entry key="app/src/main/res/layout/coffee_list_view_item.xml" value="0.5894073486328126" />
+        <entry key="app/src/main/res/layout/coffee_list_view_item.xml" value="0.4252931306131974" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/content_stats.xml" value="0.14175724637681159" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.18966369628906252" />

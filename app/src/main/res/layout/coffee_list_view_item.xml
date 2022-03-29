@@ -16,6 +16,7 @@
 
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list_view_item_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -40,13 +41,24 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="?attr/shapeAppearanceMediumComponent" />
 
+
+        <ImageView
+            android:id="@+id/add_tick_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_tick_point"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/add_id"
-            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -55,6 +67,7 @@
             android:maxLines="1"
             android:textAppearance="?attr/textAppearanceBodyLarge"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/add_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/add_icon"
@@ -72,7 +85,7 @@
             android:maxLines="1"
             android:textAppearance="?attr/textAppearanceBodyMedium"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/add_tick_image"
             app:layout_constraintStart_toEndOf="@id/add_icon"
             app:layout_constraintTop_toBottomOf="@+id/add_id" />
 

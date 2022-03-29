@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -59,11 +60,19 @@ public class NewItemActivity extends AppCompatActivity {
 
     private void addItemButtonClicked(View v) {
 
-        //TODO поменять
-        safeNewRecord("ТЕСТ", 1L);
-        Intent intent = new Intent();
-        setResult(RESULT_OK, intent);
-        finish();
+
+        if (coffeeListAdapter.getSelected() != null) {
+            String msg = coffeeListAdapter.getSelected().name + " with id "+coffeeListAdapter.getSelected().id;
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "No Selection", Toast.LENGTH_SHORT).show();
+        }
+
+        //TODO: поменять на данные выбранного кофе
+        //safeNewRecord("ТЕСТ", 1L);
+        //Intent intent = new Intent();
+        //setResult(RESULT_OK, intent);
+        //finish();
     }
 
 
