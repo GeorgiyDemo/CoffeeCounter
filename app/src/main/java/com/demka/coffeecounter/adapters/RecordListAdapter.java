@@ -60,11 +60,11 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.My
         holder.title.setText(recordList.get(position).coffee.name);
 
         //TODO: Вынести в strings
-        String caffeineString = "Caffeine: " + caffeine+" mg";
+        String caffeineString = "Caffeine: " + caffeine + " mg";
         holder.caffeine.setText(caffeineString);
 
         //TODO: Вынести в strings
-        String amountString = "Amount: "+ recordList.get(position).record.amount;
+        String amountString = "Amount: " + recordList.get(position).record.amount;
         holder.amount.setText(amountString);
 
         holder.timestamp.setText(currentDateString);

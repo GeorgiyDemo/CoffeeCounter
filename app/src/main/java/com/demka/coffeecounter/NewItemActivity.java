@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -63,37 +62,27 @@ public class NewItemActivity extends AppCompatActivity {
 
     private void addItemButtonClicked(View v) {
 
-
         if (coffeeListAdapter.getSelected() != null) {
-            String msg = coffeeListAdapter.getSelected().name + " with id "+coffeeListAdapter.getSelected().id;
-            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+
+            long currentTime = System.currentTimeMillis() / 1000L;
+            AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());
+
+            Record record = new Record();
+            record.coffeeId = coffeeListAdapter.getSelected().id;
+            record.time = currentTime;
+
+            //TODO: как-то переделать Amount, отдельная активити?
+            record.amount = 1L;
+
+            db.recordDao().insertRecord(record);
+            Toast.makeText(this, "Ok", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent();
+            setResult(RESULT_OK, intent);
+            finish();
+
         } else {
-            Toast.makeText(this, "No Selection", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Ничего не выбрано!", Toast.LENGTH_SHORT).show();
         }
-
-        //TODO: поменять на данные выбранного кофе
-        //safeNewRecord("ТЕСТ", 1L);
-        //Intent intent = new Intent();
-        //setResult(RESULT_OK, intent);
-        //finish();
-    }
-
-
-    private void safeNewRecord(String name, Long amount) {
-
-        long currentTime = System.currentTimeMillis() / 1000L;
-        AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());
-
-        Record record = new Record();
-
-        //TODO: Как-то получить данные выбранного нами кофи с адаптера
-
-        record.coffeeId = 3L;
-        record.amount = amount;
-        record.time = currentTime;
-
-        db.recordDao().insertRecord(record);
-
-
     }
 }

@@ -50,7 +50,7 @@ public class CoffeeListAdapter extends RecyclerView.Adapter<CoffeeListAdapter.My
 
         holder.title.setText(coffeeList.get(position).name);
 
-        String caffeineString = "Caffeine: " + coffeeList.get(position).mg+" mg";
+        String caffeineString = "Caffeine: " + coffeeList.get(position).mg + " mg";
         holder.caffeine.setText(caffeineString);
         holder.caffeine.setText(caffeineString);
 

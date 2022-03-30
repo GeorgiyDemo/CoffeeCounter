@@ -3,7 +3,6 @@ package com.demka.coffeecounter.db;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "coffee")
@@ -13,7 +12,7 @@ public class Coffee {
     public Long id;
 
     public String name;
-    
+
     public Double mg;
 
     @ColumnInfo(name = "image_path")

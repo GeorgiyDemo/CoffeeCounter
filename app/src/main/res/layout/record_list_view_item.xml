@@ -46,7 +46,6 @@
 
         <TextView
             android:id="@+id/main_title"
-            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -54,6 +53,7 @@
             android:maxLines="1"
             android:textAppearance="?attr/textAppearanceBodyLarge"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/main_caffeine"
             app:layout_constraintEnd_toStartOf="@id/main_timestamp"
             app:layout_constraintStart_toEndOf="@id/main_icon"
