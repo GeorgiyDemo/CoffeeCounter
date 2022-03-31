@@ -7,6 +7,9 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.demka.coffeecounter.adapters.ChartDataAdapter;
+import com.demka.coffeecounter.db.AppDatabase;
+import com.demka.coffeecounter.db.GroupCoffeeItem;
+import com.demka.coffeecounter.db.relations.RecordWithCoffee;
 import com.demka.coffeecounter.statsitems.BarChartItem;
 import com.demka.coffeecounter.statsitems.ChartItem;
 import com.demka.coffeecounter.statsitems.LineChartItem;
@@ -24,9 +27,11 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class StatsActivity extends AppCompatActivity {
 
+    AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,8 @@ public class StatsActivity extends AppCompatActivity {
 
         ListView lv = findViewById(R.id.listView1);
 
+
+        db = AppDatabase.getDbInstance(getApplicationContext());
         ArrayList<ChartItem> list = new ArrayList<>();
 
         list.add(new PieChartItem(generateDataPie(), getApplicationContext()));
@@ -45,11 +52,26 @@ public class StatsActivity extends AppCompatActivity {
         lv.setAdapter(cda);
     }
 
-    /**
-     * generates a random ChartData object with just one DataSet
-     *
-     * @return Line data
-     */
+    private PieData generateDataPie() {
+
+        List<GroupCoffeeItem> groupedItems = db.recordDao().getCoffeeGroupItems();
+
+        //TODO: Группировка кофе по кол-ву  -> GROUP BY coffeeId
+        ArrayList<PieEntry> entries = new ArrayList<>();
+
+        for (GroupCoffeeItem item: groupedItems) {
+            entries.add(new PieEntry(item.count, item.name));
+        }
+
+        PieDataSet d = new PieDataSet(entries, "");
+
+        // space between slices
+        d.setSliceSpace(2f);
+        d.setColors(ColorTemplate.COLORFUL_COLORS);
+
+        return new PieData(d);
+    }
+
     private LineData generateDataLine(int cnt) {
 
         ArrayList<Entry> values1 = new ArrayList<>();
@@ -105,27 +127,5 @@ public class StatsActivity extends AppCompatActivity {
         BarData cd = new BarData(d);
         cd.setBarWidth(0.9f);
         return cd;
-    }
-
-    /**
-     * generates a random ChartData object with just one DataSet
-     *
-     * @return Pie data
-     */
-    private PieData generateDataPie() {
-
-        ArrayList<PieEntry> entries = new ArrayList<>();
-
-        for (int i = 0; i < 4; i++) {
-            entries.add(new PieEntry((float) ((Math.random() * 70) + 30), "Quarter " + (i + 1)));
-        }
-
-        PieDataSet d = new PieDataSet(entries, "");
-
-        // space between slices
-        d.setSliceSpace(2f);
-        d.setColors(ColorTemplate.VORDIPLOM_COLORS);
-
-        return new PieData(d);
     }
 }
