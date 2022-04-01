@@ -1,12 +1,20 @@
 <resources>
     <string name="app_name">CoffeeCounter</string>
-    <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
 
-    <string name="add_item_button">Добавить напиток</string>
-    <string name="item_search_hint">Введите тип кофе</string>
+    <string name="stats_activity">Statistic</string>
+    <string name="action_settings">Settings</string>
+    <string name="stat_activity">Statistic</string>
+    <string name="new_item_activity">Add item</string>
+
+    <string name="add_item_button">Add item</string>
+    <string name="item_search_hint">Input coffee type</string>
     <string name="caffeine">Caffeine</string>
     <string name="caffeine_amount">mg</string>
+    <string name="amount">Amount</string>
+
+    <string name="coffee_linechart_header">Caffeine consumption by day</string>
+    <string name="piechart_title">Coffee consumption\nby type</string>
 </resources>

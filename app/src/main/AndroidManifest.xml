@@ -13,16 +13,16 @@
             android:name=".FinalAddItemActivity"
             android:exported="false" />
         <activity
-            android:name=".ItemActivity"
+            android:name=".RecordInfoActivity"
             android:exported="false" />
         <activity
             android:name=".StatsActivity"
             android:exported="false"
-            android:label="Статистика" />
+            android:label="@string/stats_activity" />
         <activity
             android:name=".NewItemActivity"
             android:exported="false"
-            android:label="Добавление напитка" />
+            android:label="@string/new_item_activity" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

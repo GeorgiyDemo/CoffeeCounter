@@ -21,10 +21,11 @@ import com.github.mikephil.charting.utils.Utils;
 public class MyMarkerView extends MarkerView {
 
     private final TextView tvContent;
+    private String mgString;
 
     public MyMarkerView(Context context, int layoutResource) {
         super(context, layoutResource);
-
+        mgString = context.getResources().getString(R.string.caffeine_amount);
         tvContent = findViewById(R.id.tvContent);
     }
 
@@ -40,7 +41,8 @@ public class MyMarkerView extends MarkerView {
             tvContent.setText(Utils.formatNumber(ce.getHigh(), 0, true));
         } else {
 
-            tvContent.setText(Utils.formatNumber(e.getY(), 0, true));
+
+            tvContent.setText(Utils.formatNumber(e.getY(), 0, true) + " " + mgString);
         }
 
         super.refreshContent(e, highlight);

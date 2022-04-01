@@ -1,4 +1,4 @@
-package com.demka.coffeecounter.db;
+package com.demka.coffeecounter.db.tables;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

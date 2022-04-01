@@ -11,6 +11,11 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.demka.coffeecounter.db.dao.CoffeeDao;
+import com.demka.coffeecounter.db.dao.RecordDao;
+import com.demka.coffeecounter.db.tables.Coffee;
+import com.demka.coffeecounter.db.tables.Record;
+
 
 @Database(entities = {Coffee.class, Record.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {

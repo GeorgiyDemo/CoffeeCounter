@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.demka.coffeecounter.adapters.CoffeeListAdapter;
 import com.demka.coffeecounter.db.AppDatabase;
-import com.demka.coffeecounter.db.Coffee;
-import com.demka.coffeecounter.db.Record;
+import com.demka.coffeecounter.db.tables.Coffee;
+import com.demka.coffeecounter.db.tables.Record;
 
 import java.util.List;
 

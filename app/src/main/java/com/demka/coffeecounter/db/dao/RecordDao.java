@@ -1,4 +1,4 @@
-package com.demka.coffeecounter.db;
+package com.demka.coffeecounter.db.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -9,6 +9,7 @@ import androidx.room.Transaction;
 import com.demka.coffeecounter.db.groupitems.CaffeineDateGroupItem;
 import com.demka.coffeecounter.db.groupitems.CoffeeTypeCountGroupItem;
 import com.demka.coffeecounter.db.relations.RecordWithCoffee;
+import com.demka.coffeecounter.db.tables.Record;
 
 import java.util.List;
 

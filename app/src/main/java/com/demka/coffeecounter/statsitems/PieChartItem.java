@@ -20,10 +20,11 @@ public class PieChartItem extends ChartItem {
 
     private final Typeface mTf;
     private final SpannableString mCenterText;
+    private String title;
 
     public PieChartItem(ChartData<?> cd, Context c) {
         super(cd);
-
+        title = c.getResources().getString(R.string.piechart_title);
         mTf = Typeface.createFromAsset(c.getAssets(), "OpenSans-Regular.ttf");
         mCenterText = generateCenterText();
     }
@@ -86,7 +87,7 @@ public class PieChartItem extends ChartItem {
     }
 
     private SpannableString generateCenterText() {
-        SpannableString s = new SpannableString("Потребление\nкофе\nпо видам");
+        SpannableString s = new SpannableString(title);
         s.setSpan(new RelativeSizeSpan(1.4f), 0, s.length(), 0);
         return s;
     }

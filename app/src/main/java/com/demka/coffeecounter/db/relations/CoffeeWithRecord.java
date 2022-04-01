@@ -3,8 +3,8 @@ package com.demka.coffeecounter.db.relations;
 import androidx.room.Embedded;
 import androidx.room.Relation;
 
-import com.demka.coffeecounter.db.Coffee;
-import com.demka.coffeecounter.db.Record;
+import com.demka.coffeecounter.db.tables.Coffee;
+import com.demka.coffeecounter.db.tables.Record;
 
 import java.util.List;
 

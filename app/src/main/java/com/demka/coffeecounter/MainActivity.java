@@ -89,16 +89,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         Intent intent;
-        switch (item.getTitle().toString()) {
-            case "Stats":
-                intent = new Intent(this, StatsActivity.class);
-                startActivity(intent);
-                break;
-            default:
-                break;
+
+        String statString = getResources().getString(R.string.stat_activity);
+        if (item.getTitle().toString().equals(statString)) {
+            intent = new Intent(this, StatsActivity.class);
+            startActivity(intent);
         }
+
         return true;
     }
-
 
 }

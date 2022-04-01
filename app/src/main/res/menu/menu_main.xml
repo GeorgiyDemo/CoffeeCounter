@@ -10,7 +10,7 @@
 
     <item
         android:id="@+id/stats_activity"
-        android:title="Stats"></item>
+        android:title="@string/stat_activity"></item>
 </menu>
 
 

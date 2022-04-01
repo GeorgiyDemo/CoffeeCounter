@@ -96,19 +96,20 @@ public class StatsActivity extends AppCompatActivity {
             values.add(new Entry(i, groupItemsList.get(i).caffeine));
         }
 
-        LineDataSet d1 = new LineDataSet(values, "");
-        d1.setLineWidth(2.5f);
-        d1.setCircleRadius(4.5f);
-        d1.setHighLightColor(Color.rgb(244, 117, 117));
-        d1.setDrawValues(false);
+        LineDataSet d = new LineDataSet(values, "");
+        d.setLineWidth(2.5f);
+        d.setCircleRadius(4.5f);
+        d.setHighLightColor(Color.rgb(244, 117, 117));
+        d.setDrawValues(false);
 
         Drawable drawable = ContextCompat.getDrawable(this, R.drawable.fade_brown);
-        d1.setFillDrawable(drawable);
-        d1.setDrawFilled(true);
-        d1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+        d.setFillDrawable(drawable);
+        d.setDrawFilled(true);
+        d.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+        d.setColor(Color.WHITE);
 
         ArrayList<ILineDataSet> sets = new ArrayList<>();
-        sets.add(d1);
+        sets.add(d);
 
         return new LineData(sets);
     }

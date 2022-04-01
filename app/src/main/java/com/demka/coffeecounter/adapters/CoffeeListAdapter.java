@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.demka.coffeecounter.R;
-import com.demka.coffeecounter.db.Coffee;
+import com.demka.coffeecounter.db.tables.Coffee;
 
 import java.util.List;
 
@@ -50,10 +50,10 @@ public class CoffeeListAdapter extends RecyclerView.Adapter<CoffeeListAdapter.My
 
         holder.title.setText(coffeeList.get(position).name);
 
-        String caffeineString = "Caffeine: " + coffeeList.get(position).mg + " mg";
-        holder.caffeine.setText(caffeineString);
-        holder.caffeine.setText(caffeineString);
+        String coffeeString = context.getResources().getString(R.string.caffeine) + ": " + coffeeList.get(position).mg + " " + context.getResources().getString(R.string.caffeine_amount);
 
+        holder.caffeine.setText(coffeeString);
+        holder.caffeine.setText(coffeeString);
 
         holder.bind(coffeeList.get(position));
     }
