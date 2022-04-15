@@ -20,11 +20,11 @@ import java.util.List;
 public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.MyViewHolder> {
 
     public List<RecordWithCoffee> recordList;
+    private OnRecordListener onRecordListener;
     private Context context;
 
-
-    public RecordListAdapter(Context context) {
-        this.context = context;
+    public RecordListAdapter(OnRecordListener onRecordListener) {
+        this.onRecordListener = onRecordListener;
 
     }
 
@@ -36,9 +36,11 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.My
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.record_list_view_item, parent, false);
-        return new MyViewHolder(view);
+        return new MyViewHolder(view, onRecordListener);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
@@ -73,23 +75,35 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.My
         return recordList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public interface OnRecordListener {
+        void onRecordClick(int position);
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView icon;
         TextView title;
         TextView caffeine;
         TextView amount;
         TextView timestamp;
+        private OnRecordListener onRecordListener;
 
-        public MyViewHolder(View view) {
+
+        public MyViewHolder(View view, OnRecordListener onRecordListener) {
             super(view);
+            this.onRecordListener = onRecordListener;
             icon = view.findViewById(R.id.main_icon);
             title = view.findViewById(R.id.main_title);
             caffeine = view.findViewById(R.id.main_caffeine);
             amount = view.findViewById(R.id.main_amount);
             timestamp = view.findViewById(R.id.main_timestamp);
 
+            view.setOnClickListener(this);
+        }
 
+        @Override
+        public void onClick(View v) {
+            onRecordListener.onRecordClick(getAdapterPosition());
         }
     }
 }

@@ -47,9 +47,7 @@ public class NewItemActivity extends AppCompatActivity {
     private void initRecycleView() {
         coffeeRecyclerView = findViewById(R.id.coffeeRecyclerView);
         coffeeRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        coffeeRecyclerView.addItemDecoration(dividerItemDecoration);
+        coffeeRecyclerView.addItemDecoration(new DividerItemDecoration(this, 0));
         coffeeListAdapter = new CoffeeListAdapter(this);
         coffeeRecyclerView.setAdapter(coffeeListAdapter);
     }
