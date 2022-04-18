@@ -13,15 +13,19 @@ import com.github.mikephil.charting.components.XAxis.XAxisPosition;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.ChartData;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+
+import java.util.List;
 
 public class BarChartItem extends ChartItem {
 
     private final Typeface mTf;
+    private List<String> stringValues;
 
-    public BarChartItem(ChartData<?> cd, Context c) {
+    public BarChartItem(ChartData<?> cd, Context c, List<String> stringValues) {
         super(cd);
-
         mTf = Typeface.createFromAsset(c.getAssets(), "OpenSans-Regular.ttf");
+        this.stringValues = stringValues;
     }
 
     @Override
@@ -59,6 +63,8 @@ public class BarChartItem extends ChartItem {
         xAxis.setTypeface(mTf);
         xAxis.setDrawGridLines(false);
         xAxis.setDrawAxisLine(true);
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(stringValues));
+
 
         YAxis leftAxis = holder.chart.getAxisLeft();
         leftAxis.setTypeface(mTf);

@@ -12,9 +12,14 @@ import com.demka.coffeecounter.adapters.ChartDataAdapter;
 import com.demka.coffeecounter.db.AppDatabase;
 import com.demka.coffeecounter.db.groupitems.CaffeineDateGroupItem;
 import com.demka.coffeecounter.db.groupitems.CoffeeTypeCountGroupItem;
+import com.demka.coffeecounter.db.groupitems.CupDateGroupItem;
+import com.demka.coffeecounter.statsitems.BarChartItem;
 import com.demka.coffeecounter.statsitems.ChartItem;
 import com.demka.coffeecounter.statsitems.LineChartItem;
 import com.demka.coffeecounter.statsitems.PieChartItem;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -42,6 +47,7 @@ public class StatsActivity extends AppCompatActivity {
 
         addPieChart();
         addLineChart();
+        addBarChart();
         initList();
     }
 
@@ -60,6 +66,28 @@ public class StatsActivity extends AppCompatActivity {
 
         LineChartItem lineChartItem = new LineChartItem(generateDataLine(), getApplicationContext(), stringValues);
         list.add(lineChartItem);
+    }
+
+    //TODO
+    private void addBarChart() {
+        List<String> stringValues = new ArrayList<>();
+        ArrayList<BarEntry> entries = new ArrayList<>();
+        List<CupDateGroupItem> groupItemsList = db.recordDao().getCupDateGroupItem();
+
+        for (int i = 0; i < groupItemsList.size(); i++) {
+            entries.add(new BarEntry(i, groupItemsList.get(i).count));
+            stringValues.add(groupItemsList.get(i).date);
+        }
+
+        BarDataSet d = new BarDataSet(entries, "");
+        d.setColors(ColorTemplate.LIBERTY_COLORS);
+        d.setHighLightAlpha(255);
+
+        BarData cd = new BarData(d);
+        cd.setBarWidth(0.9f);
+
+        BarChartItem barChartItem = new BarChartItem(cd, getApplicationContext(), stringValues);
+        list.add(barChartItem);
     }
 
     private void initList() {
