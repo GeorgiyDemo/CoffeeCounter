@@ -48,7 +48,7 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.My
         Date date = new Date();
 
         date.setTime(recordList.get(position).record.time * 1000);
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
         String currentDateString = dateFormatter.format(date);
 
         Double caffeine = recordList.get(position).record.amount * recordList.get(position).coffee.mg;

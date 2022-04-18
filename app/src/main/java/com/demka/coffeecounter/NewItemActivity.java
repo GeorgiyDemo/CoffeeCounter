@@ -17,19 +17,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.demka.coffeecounter.adapters.CoffeeListAdapter;
 import com.demka.coffeecounter.db.AppDatabase;
 import com.demka.coffeecounter.db.tables.Coffee;
-import com.demka.coffeecounter.db.tables.Record;
 
 import java.util.List;
 
 public class NewItemActivity extends AppCompatActivity {
 
     RecyclerView coffeeRecyclerView;
-
     CoffeeListAdapter coffeeListAdapter;
     Button addItemButton;
     EditText searchEditText;
     AppDatabase db;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +64,6 @@ public class NewItemActivity extends AppCompatActivity {
         });
     }
 
-
     private void initRecycleView() {
         coffeeRecyclerView = findViewById(R.id.coffeeRecyclerView);
         coffeeRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -84,26 +80,14 @@ public class NewItemActivity extends AppCompatActivity {
     private void addItemButtonClicked(View v) {
 
         if (coffeeListAdapter.getSelected() != null) {
-
-            long currentTime = System.currentTimeMillis() / 1000L;
-            AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());
-
-            Record record = new Record();
-            record.coffeeId = coffeeListAdapter.getSelected().id;
-            record.time = currentTime;
-
-            //TODO: как-то переделать Amount, отдельная активити?
-            record.amount = 1L;
-
-            db.recordDao().insertRecord(record);
-            Toast.makeText(this, "Ok", Toast.LENGTH_SHORT).show();
-
-            Intent intent = new Intent();
+            Intent intent = new Intent(this, FinalAddItemActivity.class);
+            intent.putExtra("coffeeId", String.valueOf(coffeeListAdapter.getSelected().id));
+            startActivity(intent);
             setResult(RESULT_OK, intent);
             finish();
-
         } else {
             Toast.makeText(this, "Ничего не выбрано!", Toast.LENGTH_SHORT).show();
         }
+
     }
 }

@@ -23,6 +23,7 @@
     <string name="count">Количество</string>
     <string name="total">Всего</string>
     <string name="item_count">шт</string>
+    <string name="item_added">Напиток добавлен</string>
 
     <string name="coffee_linechart_header">Потребление кофеина по дням</string>
     <string name="piechart_title">Потребление\nкофе\nпо видам</string>

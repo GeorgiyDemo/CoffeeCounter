@@ -24,12 +24,9 @@ public interface RecordDao {
     @Query("SELECT * FROM record ORDER BY time DESC;")
     List<RecordWithCoffee> getAllRecordsWithCoffee();
 
-
     @Transaction
     @Query("SELECT * FROM record WHERE id=:id;")
     RecordWithCoffee getRecordWithCoffeeById(String id);
-
-    //TODO: getRecordWithCoffeeById (?)
 
     @Query("SELECT coffee.name, SUM(amount) as count FROM record INNER JOIN coffee ON record.coffeeId=coffee.id GROUP by coffee.name;")
     List<CoffeeTypeCountGroupItem> getCoffeeTypeCountGroupItems();
