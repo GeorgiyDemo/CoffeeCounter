@@ -16,19 +16,19 @@ public class CoffeeData {
             "Cold brew", "Dripped eye", "Espresso macchiato",
             "Green coffee", "Iced coffee", "Irish coffee",
             "Latte macchiato", "Lazy eye", "Mocha",
-            "Nitrous coffee", "Red eye", "Single double espresso",
+            "Nitrous coffee", "Red eye", "Single espresso",
             "Turkish coffee"
     );
 
     private static List<Double> caffeine = Arrays.asList(
-            12.1, 12.1, 12.1,
-            12.1, 12.1, 12.1,
-            12.1, 12.1, 12.1,
-            12.1, 12.1, 12.1,
-            12.1, 12.1, 12.1,
-            12.1, 12.1, 12.1,
-            12.1, 12.1, 12.1,
-            12.1);
+            75.0, 112.0, 147.5,
+            147.5, 147.5, 223.0,
+            128.0, 128.0, 150.0,
+            200.0, 112.0, 212.0,
+            33.5, 40.0, 120.0,
+            128.0, 112.0, 125.0,
+            162.5, 112.0, 212.0,
+            84.54);
 
     private static List<String> imagePath = Arrays.asList(
             "affogato", "americano", "black_coffee_with_milk_and_sugar",

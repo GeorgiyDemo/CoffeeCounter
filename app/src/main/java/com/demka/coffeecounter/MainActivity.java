@@ -101,8 +101,12 @@ public class MainActivity extends AppCompatActivity implements RecordListAdapter
     public void onRecordClick(int position) {
         AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());
         RecordWithCoffee currentRecord = db.recordDao().getAllRecordsWithCoffee().get(position);
-
         Intent intent = new Intent(this, RecordInfoActivity.class);
+        intent.putExtra("res", currentRecord.coffee.imagePath);
+        intent.putExtra("name", currentRecord.coffee.name);
+        intent.putExtra("date", String.valueOf(currentRecord.record.time));
+        intent.putExtra("amount", String.valueOf(currentRecord.record.amount));
+        intent.putExtra("mg", String.valueOf(currentRecord.coffee.mg));
         startActivity(intent);
     }
 }

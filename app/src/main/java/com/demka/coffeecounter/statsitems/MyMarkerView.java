@@ -25,7 +25,7 @@ public class MyMarkerView extends MarkerView {
 
     public MyMarkerView(Context context, int layoutResource) {
         super(context, layoutResource);
-        mgString = context.getResources().getString(R.string.caffeine_amount);
+        mgString = context.getResources().getString(R.string.mg);
         tvContent = findViewById(R.id.tvContent);
     }
 

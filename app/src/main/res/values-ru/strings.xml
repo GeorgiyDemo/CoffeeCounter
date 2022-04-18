@@ -13,8 +13,15 @@
     <string name="add_item_button">Добавить напиток</string>
     <string name="item_search_hint">Введите тип кофе</string>
     <string name="caffeine">Кофеин</string>
-    <string name="caffeine_amount">мг</string>
+    <string name="mg">мг</string>
     <string name="amount">Количество</string>
+
+
+    <string name="okButton">Готово</string>
+    <string name="details">Подробности:</string>
+    <string name="count">Количество</string>
+    <string name="total">Всего</string>
+    <string name="item_count">шт</string>
 
     <string name="coffee_linechart_header">Потребление кофеина по дням</string>
     <string name="piechart_title">Потребление\nкофе\nпо видам</string>

@@ -3,13 +3,9 @@ package com.demka.coffeecounter.db.tables;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 
 @Entity(tableName = "coffee")
-public class Coffee {
-
-    @PrimaryKey(autoGenerate = true)
-    public Long id;
+public class Coffee extends BaseEntity {
 
     public String name;
 

@@ -8,8 +8,8 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2255" />
         <entry key="app/src/main/res/drawable/ic_tick_point.xml" value="0.1405" />
         <entry key="app/src/main/res/layout/activity_final_add_item_main.xml" value="0.21784420289855072" />
-        <entry key="app/src/main/res/layout/activity_item.xml" value="0.1993206117211318" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1205612182617187" />
+        <entry key="app/src/main/res/layout/activity_item.xml" value="0.27191430068597555" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_new_item.xml" value="0.29456787109375004" />
         <entry key="app/src/main/res/layout/activity_stats.xml" value="0.1" />
         <entry key="app/src/main/res/layout/add_item_list_view_item.xml" value="0.14175724637681159" />
@@ -27,6 +27,7 @@
         <entry key="app/src/main/res/layout/main_item_list_view_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/record_list_view_item.xml" value="0.2793441772460938" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.26174496644295303" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>

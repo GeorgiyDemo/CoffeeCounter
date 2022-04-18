@@ -61,7 +61,7 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.My
 
         holder.title.setText(recordList.get(position).coffee.name);
 
-        String caffeineString = context.getResources().getString(R.string.caffeine) + ": " + caffeine + " " + context.getResources().getString(R.string.caffeine_amount);
+        String caffeineString = context.getResources().getString(R.string.caffeine) + ": " + caffeine + " " + context.getResources().getString(R.string.mg);
         holder.caffeine.setText(caffeineString);
 
         String amountString = context.getResources().getString(R.string.amount) + ": " + recordList.get(position).record.amount;
