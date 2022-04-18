@@ -17,7 +17,8 @@
     <string name="amount">Количество</string>
 
 
-    <string name="okButton">Готово</string>
+    <string name="ok_button">Готово</string>
+    <string name="remove_button">Удалить</string>
     <string name="details">Подробности:</string>
     <string name="count">Количество</string>
     <string name="total">Всего</string>

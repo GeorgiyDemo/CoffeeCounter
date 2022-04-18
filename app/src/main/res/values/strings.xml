@@ -15,7 +15,8 @@
     <string name="mg">mg</string>
     <string name="amount">Amount</string>
 
-    <string name="okButton">OK</string>
+    <string name="ok_button">OK</string>
+    <string name="remove_button">Remove</string>
     <string name="details">Details:</string>
     <string name="count">Count</string>
     <string name="total">Total</string>

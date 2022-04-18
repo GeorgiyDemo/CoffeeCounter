@@ -76,14 +76,13 @@ public class MainActivity extends AppCompatActivity implements RecordListAdapter
         addItemActivity.launch(intent);
     }
 
-
     // создание меню из XML
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
-    // обработка нажатий на меню
+    // Обработка нажатий на меню
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -102,11 +101,7 @@ public class MainActivity extends AppCompatActivity implements RecordListAdapter
         AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());
         RecordWithCoffee currentRecord = db.recordDao().getAllRecordsWithCoffee().get(position);
         Intent intent = new Intent(this, RecordInfoActivity.class);
-        intent.putExtra("res", currentRecord.coffee.imagePath);
-        intent.putExtra("name", currentRecord.coffee.name);
-        intent.putExtra("date", String.valueOf(currentRecord.record.time));
-        intent.putExtra("amount", String.valueOf(currentRecord.record.amount));
-        intent.putExtra("mg", String.valueOf(currentRecord.coffee.mg));
-        startActivity(intent);
+        intent.putExtra("id", String.valueOf(currentRecord.record.id));
+        addItemActivity.launch(intent);
     }
 }
