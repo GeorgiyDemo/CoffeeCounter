@@ -17,6 +17,9 @@ public interface CoffeeDao {
     @Query("SELECT * FROM coffee;")
     List<Coffee> getAllCoffee();
 
+    @Query("SELECT * FROM coffee WHERE name LIKE '%' || :name || '%'")
+    List<Coffee> getAllCoffeeByString(String name);
+
     @Transaction
     @Query("SELECT * FROM coffee;")
     List<CoffeeWithRecord> getAllCoffeeWithRecords();

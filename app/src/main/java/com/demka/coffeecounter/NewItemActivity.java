@@ -2,6 +2,8 @@ package com.demka.coffeecounter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,9 +25,10 @@ public class NewItemActivity extends AppCompatActivity {
 
     RecyclerView coffeeRecyclerView;
 
-    private CoffeeListAdapter coffeeListAdapter;
-    private Button addItemButton;
-    private EditText searchEditText;
+    CoffeeListAdapter coffeeListAdapter;
+    Button addItemButton;
+    EditText searchEditText;
+    AppDatabase db;
 
 
     @Override
@@ -39,8 +42,29 @@ public class NewItemActivity extends AppCompatActivity {
         addItemButton = findViewById(R.id.addItemButton);
         addItemButton.setOnClickListener(newButtonListener);
 
+        db = AppDatabase.getDbInstance(getApplicationContext());
+        initEditText();
         initRecycleView();
         loadRecordList();
+    }
+
+    private void initEditText() {
+        searchEditText.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                List<Coffee> newCoffeeList = db.coffeeDao().getAllCoffeeByString(s.toString());
+                coffeeListAdapter.setCoffeeList(newCoffeeList);
+            }
+        });
     }
 
 
@@ -53,7 +77,6 @@ public class NewItemActivity extends AppCompatActivity {
     }
 
     private void loadRecordList() {
-        AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());
         List<Coffee> coffeeList = db.coffeeDao().getAllCoffee();
         coffeeListAdapter.setCoffeeList(coffeeList);
     }
